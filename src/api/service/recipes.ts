@@ -15,8 +15,10 @@ const getRecipeById = async (id: Recipe['id']): Promise<Recipe> => {
     return new Promise<Recipe>(resolve => resolve(recipe))
 }
 
-const createRecipe = async (recipe: Recipe) => {
-    recipeDatabase.push({ ...recipe })
+const createRecipe = async (recipe: Recipe): Promise<Recipe> => {
+    const newRecipe = { ...recipe }
+    recipeDatabase.push(newRecipe)
+    return new Promise<Recipe>(resole => resole(newRecipe))
 }
 
 export { getAllRecipes, getRecipeById, createRecipe }

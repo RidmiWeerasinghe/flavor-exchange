@@ -2,12 +2,12 @@ import { Recipe, User } from "../models/types"
 
 const dtoToRecipe = (data: any): Recipe => {
     return {
-        id: data['idMeal'],
-        title: data['strMeal'] || '',
-        image: data['strMealThumb'] || '',
+        id: data['id'],
+        title: data['title'] || '',
+        image: data['image'] || '',
         tags: data['tags'] || [],
-        ingredients: data['strIngredients'] || [],
-        instructions: data['strInstructions'] || [],
+        ingredients: data['ingredients'] || [],
+        instructions: data['instructions'] || [],
         ratings: data['ratings'] || [],
         createdBy: data['createdBy'],
     }
