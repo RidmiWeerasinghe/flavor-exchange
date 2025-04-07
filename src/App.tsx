@@ -1,39 +1,39 @@
-import { useEffect, useState } from 'react'
 import './App.css'
-import { Recipe } from './api/models/types'
-import { createRecipe, getAllRecipes } from './api/service/recipes'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import { useEffect } from 'react';
+import { useUserStore } from './store/userStore';
+import Stack from '@mui/material/Stack';
+import CircularProgress from '@mui/material/CircularProgress';
+import { useNavigate } from 'react-router';
 
 function App() {
-
-  const [data, setData] = useState<Recipe[]>([])
-
-  const handleCreate = async () => {
-    const newRecipe = await createRecipe({
-      id: 12,
-      title: "test",
-      createdBy: 2,
-      image: "",
-      ingredients: ["testIng"],
-      instructions: "gfy",
-      ratings: 4,
-      tags: ["n", "x"]
-    })
-    setData(prev => [...prev, newRecipe])
-  }
+  const user = useUserStore.getState()
+  const navigation = useNavigate()
+  const userStoreHydrated = useUserStore.persist.hasHydrated
 
   useEffect(() => {
-    const asyncBootstrap = async () => {
-      const recipes = (await getAllRecipes()).reverse()
-      setData(recipes)
+    if (!userStoreHydrated) {
+      return
     }
-    asyncBootstrap()
-  }, [])
+
+    const userExists = typeof user.username !== 'undefined' || typeof user.id !== "undefined"
+    const userAuthenticated = userExists && user.username === 'testUser' && user.password === 'pass'
+
+    if (userAuthenticated) {
+      navigation("/home")
+    } else {
+      navigation("/login")
+    }
+
+  }, [userStoreHydrated])
 
   return (
-    <div>
-      <button onClick={handleCreate}>create</button>
-      {JSON.stringify(data)}
-    </div>
+    <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
+      <CircularProgress color="inherit" />
+    </Stack>
   )
 }
 
