@@ -9,6 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import Box from '@mui/material/Box'
 import { useUserStore } from '../store/userStore'
+import Rating from '@mui/material/Rating'
 
 type Props = {
     recipe: Recipe,
@@ -38,6 +39,13 @@ function RecipeCard({ recipe, onClick }: Props) {
                     <IconButton aria-label="add to favorites" onClick={() => isInFavorites ? removeFromFavorites(recipe.id) : addToFavorites(recipe.id)}>
                         {isInFavorites ? <FavoriteIcon /> : <FavoriteBorderIcon />}
                     </IconButton>
+                    <Rating
+                        name="simple-uncontrolled"
+                        onChange={(event, newValue) => {
+                            console.log(newValue);
+                        }}
+                        defaultValue={recipe.ratings}
+                    />
                     <Box>
                         <IconButton aria-label="share">
                             <ShareIcon />

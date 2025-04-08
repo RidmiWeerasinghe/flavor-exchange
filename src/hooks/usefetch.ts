@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 
-export default function useFetch<T>(apiFunction: (_: any) => Promise<T>, ...args: any) {
+export default function useFetch<T>({ apiFunction, args }: { apiFunction: (_: any) => Promise<T>, args?: any }) {
 
     const [data, setData] = useState<T | undefined>(undefined)
     const [isLoading, setIsLoading] = useState(false)

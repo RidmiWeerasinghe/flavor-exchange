@@ -10,9 +10,14 @@ const getAllRecipes = async (): Promise<Recipe[]> => {
 }
 
 const getRecipeById = async (id: Recipe['id']): Promise<Recipe> => {
-    const rawData = recipeDatabase.find(data => data.id === id);
+    const rawData = recipeDatabase.find(data => data.id == id);
     const recipe = dtoToRecipe(rawData)
     return new Promise<Recipe>(resolve => resolve(recipe))
+}
+
+const getRecipes = async (ids: Recipe['id'][]): Promise<Recipe[]> => {
+    const data = recipeDatabase.filter(r => ids.includes(r.id)).map(dtoToRecipe)
+    return new Promise<Recipe[]>(resolve => resolve(data))
 }
 
 const createRecipe = async (recipe: Recipe): Promise<Recipe> => {
@@ -21,4 +26,4 @@ const createRecipe = async (recipe: Recipe): Promise<Recipe> => {
     return new Promise<Recipe>(resole => resole(newRecipe))
 }
 
-export { getAllRecipes, getRecipeById, createRecipe }
+export { getAllRecipes, getRecipes, getRecipeById, createRecipe }

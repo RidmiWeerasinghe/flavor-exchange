@@ -12,7 +12,7 @@
             "Sage"
         ],
         "createdBy": 1,
-        "ratings": 4,
+        "ratings": 5,
         "isFavorite": true
     },
     {
@@ -55,7 +55,7 @@
             "Butter"
         ],
         "createdBy": 1,
-        "ratings": 4
+        "ratings": 1
     },
     {
         "id": 4,
@@ -157,7 +157,7 @@
             "Gruyère"
         ],
         "createdBy": 1,
-        "ratings": 4
+        "ratings": 1
     },
     {
         "id": 9,
@@ -186,7 +186,7 @@
             "Chives"
         ],
         "createdBy": 1,
-        "ratings": 4
+        "ratings": 5
     },
     {
         "id": 10,
@@ -213,7 +213,7 @@
             "Cumin Seeds"
         ],
         "createdBy": 1,
-        "ratings": 4
+        "ratings": 0
     },
     {
         "id": 11,

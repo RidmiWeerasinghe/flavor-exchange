@@ -17,7 +17,7 @@ type UserStore = {
     removeFromFavorites: (_: Recipe['id']) => void,
 }
 
-const useUserStore = create<UserStore>()(persist((set, get) => ({
+const useUserStore = create<UserStore>()(persist((set) => ({
     id: undefined,
     username: undefined,
     password: undefined,

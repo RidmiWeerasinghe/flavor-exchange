@@ -10,6 +10,7 @@ import HomeLayout from "./routes/layouts/homeLayout.tsx";
 import Home from "./routes/pages/home/home.tsx";
 import MyRecipes from "./routes/pages/home/myRecipes.tsx";
 import Favorites from "./routes/pages/home/favorites.tsx";
+import RecipeDetails from "./routes/pages/home/recipeDetails.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -22,6 +23,7 @@ createRoot(document.getElementById("root")!).render(
         </Route>
         <Route element={<HomeLayout />}>
           <Route index path="/home" element={<Home />} />
+          <Route path="/recipe/:recipeId" element={<RecipeDetails />} />
           <Route path="/my-recipes" element={<MyRecipes />} />
           <Route path="/favorites" element={<Favorites />} />
         </Route>

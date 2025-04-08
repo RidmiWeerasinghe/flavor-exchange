@@ -8,16 +8,18 @@ import RecipeCard from "../../../components/recipeCard";
 import { TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export default function Home() {
-    const { data, isLoading, error } = useFetch<Recipe[]>(getAllRecipes);
+    const navigate = useNavigate()
+    const { data, isLoading, error } = useFetch<Recipe[]>({ apiFunction: getAllRecipes });
     const [searchKey, setSearchKey] = useState("");
 
     const handleSearchInput = (e: React.ChangeEvent<HTMLInputElement>) =>
         setSearchKey(e.target.value);
 
     const onRecipePress = (recipe: Recipe) => {
-        // recipe details route
+        navigate(`/recipe/${recipe.id}`)
     };
 
     const filteredData =
