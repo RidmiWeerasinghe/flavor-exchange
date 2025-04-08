@@ -22,8 +22,8 @@ createRoot(document.getElementById("root")!).render(
         </Route>
         <Route element={<HomeLayout />}>
           <Route index path="/home" element={<Home />} />
-          <Route index path="/my-recipes" element={<MyRecipes />} />
-          <Route index path="/favorites" element={<Favorites />} />
+          <Route path="/my-recipes" element={<MyRecipes />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -12,7 +12,8 @@
             "Sage"
         ],
         "createdBy": 1,
-        "ratings": 4
+        "ratings": 4,
+        "isFavorite": true
     },
     {
         "id": 2,

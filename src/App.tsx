@@ -5,9 +5,8 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { useEffect } from 'react';
 import { useUserStore } from './store/userStore';
-import Stack from '@mui/material/Stack';
-import CircularProgress from '@mui/material/CircularProgress';
 import { useNavigate } from 'react-router';
+import Spinner from './components/spinner';
 
 function App() {
   const user = useUserStore.getState()
@@ -31,9 +30,7 @@ function App() {
   }, [userStoreHydrated])
 
   return (
-    <Stack sx={{ color: 'grey.500' }} spacing={2} direction="row">
-      <CircularProgress color="inherit" />
-    </Stack>
+    <Spinner />
   )
 }
 
