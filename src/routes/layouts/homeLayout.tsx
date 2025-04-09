@@ -53,8 +53,8 @@ function HomeLayout() {
     };
 
     return (
-        <Box>
-            <AppBar position="static">
+        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+            <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <Typography
@@ -127,7 +127,7 @@ function HomeLayout() {
                         >
                             Flavor Exchange
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+                        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: "center" }}>
                             {pages.map((page) => (
                                 <Button
                                     key={page}
@@ -172,7 +172,7 @@ function HomeLayout() {
                     </Toolbar>
                 </Container>
             </AppBar>
-            <Box className="w-full h-full">
+            <Box sx={{ flexGrow: 1, overflowY: 'auto', padding: 2 }}>
                 <Outlet />
             </Box>
         </Box>

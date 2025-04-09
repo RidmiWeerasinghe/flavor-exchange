@@ -23,13 +23,28 @@ function RecipeCard({ recipe, onClick }: Props) {
     const isInFavorites = savedRecipes.includes(recipe.id)
 
     return (
-        <Card sx={{ border: '1px solid lightgray', borderRadius: 2, }}>
+        <Card sx={{
+            border: '1px solid lightgray',
+            maxHeight: '100%',
+            maxWidth: '90%', borderRadius: 2
+        }}>
             <CardHeader
+                sx={{
+                    height: 85,
+                    justifySelf: 'center'
+                }}
                 title={recipe.title ? recipe.title : "Shrimp and Chorizo Paella"}
             />
             <CardMedia
                 component="img"
-                height="194"
+                sx={{
+                    width: '100%',
+                    maxHeight: '250px',
+                    minHeight: '200px',
+                    objectFit: 'cover',
+                    marginBottom: 2,
+                    cursor: 'pointer',
+                }}
                 image={recipe.image ? recipe.image : "https://st4.depositphotos.com/13349494/27992/i/450/depositphotos_279925888-stock-photo-top-view-raw-meat-fish.jpg"}
                 alt={recipe.title ? recipe.title : "Shrimp and Chorizo Paella"}
                 onClick={() => onClick(recipe)}
@@ -42,7 +57,7 @@ function RecipeCard({ recipe, onClick }: Props) {
                     <Rating
                         name="simple-uncontrolled"
                         onChange={(event, newValue) => {
-                            console.log(newValue);
+                            //console.log(newValue);
                         }}
                         defaultValue={recipe.ratings}
                     />

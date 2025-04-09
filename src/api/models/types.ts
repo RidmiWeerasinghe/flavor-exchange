@@ -4,7 +4,7 @@ export type Recipe = {
     image: string,
     ingredients: string[],
     instructions: string,
-    tags: string[]
+    //tags: string[]
     ratings: number,
     createdBy: User['id']
 }

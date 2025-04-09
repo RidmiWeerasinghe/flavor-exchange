@@ -6,9 +6,11 @@ import { getRecipes } from '../../../api/service/recipes';
 import useFetch from '../../../hooks/usefetch';
 import { Recipe } from '../../../api/models/types';
 import Spinner from '../../../components/spinner';
+import { useNavigate } from 'react-router';
 
 
 function Favorites() {
+    const navigate = useNavigate()
     const savedRecipes = useUserStore(state => state.savedRecipes)
     const { data, isLoading, error } = useFetch<Recipe[]>({ apiFunction: getRecipes, args: savedRecipes })
 
@@ -20,11 +22,10 @@ function Favorites() {
         return <Spinner />;
     }
 
-    function onRecipePress() {
+    const onRecipePress = (recipe: Recipe) => {
+        navigate(`/recipe/${recipe.id}`)
+    };
 
-    }
-    console.log("data", data)
-    console.log("savedRecipes", savedRecipes)
     return (
         <Box
             sx={{
