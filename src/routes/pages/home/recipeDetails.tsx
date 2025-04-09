@@ -19,7 +19,7 @@ export default function RecipeDetails() {
     if (isLoading) {
         return <Spinner />
     } else if (error) {
-        return <div>{JSON.stringify(error, null, 2)}</div>
+        throw error
     }
 
     function handleUpdateRecipe() {
@@ -52,13 +52,13 @@ export default function RecipeDetails() {
                 <Typography variant="h4" gutterBottom>
                     {data?.title}
                 </Typography>
-                <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>
+                <Box sx={{ color: 'gray', fontStyle: 'italic', mt: 1, mb: 1 }}>
                     {data?.tags.map((item, index) => (
-                        <span key={index}>
-                            <Typography variant="body1">{item}</Typography>
+                        <span key={index} style={{ marginRight: 8 }}>
+                            #{item}
                         </span>
                     ))}
-                </Typography>
+                </Box>
                 <Box
                     component="img"
                     src={data?.image || "https://st4.depositphotos.com/13349494/27992/i/450/depositphotos_279925888-stock-photo-top-view-raw-meat-fish.jpg"}

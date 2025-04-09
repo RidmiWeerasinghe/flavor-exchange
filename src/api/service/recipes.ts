@@ -6,7 +6,7 @@ const recipeDatabase = data;
 
 const getAllRecipes = async (): Promise<Recipe[]> => {
     const data = recipeDatabase.map(dtoToRecipe)
-    return new Promise<Recipe[]>(resolve => resolve(data))
+    return Promise.resolve(data);
 }
 
 const getRecipeById = async (id: Recipe['id']): Promise<Recipe> => {
@@ -32,6 +32,7 @@ const getRecipesByCreatedById = async (id: Recipe['createdBy']): Promise<Recipe[
 const createRecipe = async (recipe: Recipe): Promise<Recipe> => {
     const lastRecipeId = recipeDatabase.length
     const newRecipe = { ...recipe, id: lastRecipeId + 1 }
+    console.log("newRecipe", newRecipe)
     recipeDatabase.push(newRecipe)
     return new Promise<Recipe>(resole => resole(newRecipe))
 }

@@ -1,49 +1,62 @@
 # 🍲 Flavor Exchange
 
-**Flavor Exchange** is a modern React-based mock recipe management app where users can register, log in, browse, search, create, edit, and delete recipes. Users can also favorite recipes they love — all powered by a mock API and client-side authentication.
+**Flavor Exchange** is a modern React-based mock recipe management app where users can register, log in, browse, search, create, edit, and delete recipes. Users can also favorite recipes they love — all powered by a **mock API** and **client-side authentication** using Local Storage.
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
-- 🔐 **User Authentication**
+1. **🔐 User Authentication**
 
-  - Register & Login with client-side validation
-  - User data is stored securely in **Local Storage**
+   - Register and log in with client-side validation
+   - User data is stored securely in **Local Storage**
 
-- 📋 **Recipe Management**
+2. **📋 Recipe Management (CRUD)**
 
-  - View all recipes
-  - Search recipes by keyword
-  - Add, edit, and delete recipes
-  - Favorite/unfavorite recipes
+   - View, add, edit, and delete recipes
+   - Search by recipe name or ingredients
 
-- 🧪 **Mock API Setup**
-  - All recipe data is served from a **mock API layer**
-  - Initial data loaded from a JSON file (`api/data/recipes.json`)
-  - API requests simulated using delay and promise-based handlers
+3. **⭐ Favorites System**
+
+   - Mark and unmark recipes as favorites
+   - Favorites are persisted in Local Storage
+
+4. **🧪 Mock API Integration**
+
+   - Recipe data is loaded from a static JSON file (`api/data/recipes.json`)
+   - API layer simulates async requests with promise delays
+
+5. **🎯 Advanced Filtering**
+
+   - Filter recipes based on dietary restrictions (e.g., **vegan**, **gluten-free**)
+   - Supports multiple filters for better user experience
+
+6. **⚠️ Error Handling**
+   - Uses **React Error Boundary** for graceful error fallback UI
 
 ---
 
 ## 🧱 Tech Stack
 
 - ⚛️ **React 19** + **TypeScript**
-- 🎨 **MUI (Material UI)** for component styling
-- 🧵 **Tailwind CSS** for custom utility styling
+- 🎨 **Material UI (MUI)** for prebuilt UI components
+- 🧵 **Tailwind CSS** for custom utility-first styling
 - 🧠 **Zustand** for global state management
-- 🛠️ **Vite** for fast dev environment
-- 🧼 **ESLint** + TypeScript config for clean code
-- 🌐 **React Router** for navigation
+- 🧩 **React Router v7** for navigation
+- 🚀 **Vite** for blazing-fast development
+- ✅ **ESLint** & **TypeScript** for code quality and linting
+- ❌ **React Error Boundary** for error fallback UI
 
 ---
 
 ## 🚀 Getting Started
 
-### 1. Clone the repo
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/your-username/flavor-exchange.git
 cd flavor-exchange
+
 ```
 
 ## 2. Install dependencies
@@ -58,13 +71,43 @@ npm install
 npm run dev
 ```
 
+## 4. login
+
+- Create a test user via the registration form
+
+- Log in using the credentials you just created
+
+- All user data and favorites are saved in Local Storage
+
+## 🗃️ Project Structure Highlights
+
+```bash
+src/
+├── api/                   # Mock API layer
+│   ├── data/              # Static JSON dataset
+│   └── dto/               # Data Transport layer
+│   └── models/            # Data types
+│   └── service/           # API simulation logic
+├── hooks/                 # Custom hooks (e.g., useForm)
+├── store/                 # Zustand state management
+├── routes/                # Main route-based pages
+├── components/            # Reusable UI components
+└── App.tsx                # Main app layout & routing
+```
+
+## Demo Screenshots
+
+|              Home Screen              |                 Recipe Details Screen                 |
+| :-----------------------------------: | :---------------------------------------------------: |
+| ![Home Screen](./README/homePage.jpg) | ![Recipe Details Screen ](./README/recipeDetails.jpg) |
+
 ## 📌 Notes
 
-This app uses local storage to store user login info and favorite recipes.
+- All recipes and user info are managed client-side only.
 
-There is no backend — all recipe CRUD operations are handled using a custom mock API layer.
+- There is no real backend — perfect for frontend testing or prototyping.
 
-For a real-world version, the mock API could be replaced with tools like json-server, Firebase, or a real backend.
+- You can easily switch to a real backend like Firebase or REST APIs in future versions.
 
 ## 🙌 Acknowledgments
 
@@ -78,11 +121,7 @@ For a real-world version, the mock API could be replaced with tools like json-se
 
 [Vite](https://vitejs.dev/)
 
-## 📃 License
-
-This project is licensed under the MIT License.
-
 ## 👤 Author
 
-Ridmi Weerasinghe
+**Ridmi Weerasinghe** -
 An aspiring full-stack developer passionate about building clean and functional web apps.

@@ -61,6 +61,7 @@ export default function useCreateRecipeForm() {
     }
     const handleFormTagsArrayInput = (value: string) => {
         setRawTagsInput(value)
+        console.log(value)
         const updatedArray = value
             .split(',')
             .map(item => item.trim())
@@ -82,6 +83,7 @@ export default function useCreateRecipeForm() {
             tags: data.tags
         });
         setRawIngredientsInput(data.ingredients.join(', '));
+        setRawTagsInput(data.tags.join(', '))
     };
 
     return {

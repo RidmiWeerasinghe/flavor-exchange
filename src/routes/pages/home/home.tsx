@@ -44,6 +44,7 @@ export default function Home() {
     const handleFilterChange = (e: SelectChangeEvent) => {
         setFilterBy(e.target.value as 'Title' | 'Ingredients' | 'Dietary-Preferences');
     };
+
     if (isLoading) {
         return <Spinner />;
     }
@@ -56,12 +57,12 @@ export default function Home() {
         <Box
             sx={{
                 flexGrow: 1,
-                padding: 8,
+                padding: 4,
             }}
         >
             <Box
                 sx={{
-                    width: "70%",
+                    width: "60%",
                     flexGrow: 1,
                     marginInline: "auto",
                     marginBottom: 4,
@@ -83,7 +84,7 @@ export default function Home() {
                         ),
                     }}
                 />
-                <FormControl size="small" sx={{ minWidth: 160 }}>
+                <FormControl size="small" sx={{ maxWidth: 190, flexGrow: 1, minWidth: 150 }}>
                     <InputLabel>Filter by</InputLabel>
                     <Select
                         value={filterBy}
@@ -92,7 +93,7 @@ export default function Home() {
                     >
                         <MenuItem id="title" value="Title">Title</MenuItem>
                         <MenuItem id="ingredients" value="Ingredients">Ingredients</MenuItem>
-                        <MenuItem id="dietary-Preferences" value="Dietary-Preferences">Ingredients</MenuItem>
+                        <MenuItem id="dietary-Preferences" value="Dietary-Preferences">Dietary-Preferences</MenuItem>
                     </Select>
                 </FormControl>
             </Box>

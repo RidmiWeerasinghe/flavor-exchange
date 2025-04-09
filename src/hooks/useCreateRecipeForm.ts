@@ -39,7 +39,6 @@ export default function useCreateRecipeForm() {
             ratings: 2,
             tags: formValues.tags
         };
-        console.log(recipe)
         createRecipe(recipe);
         navigate("/my-recipes");
     }

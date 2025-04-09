@@ -12,15 +12,14 @@ import AddIcon from '@mui/icons-material/Add';
 
 export default function MyRecipes() {
     const navigate = useNavigate()
-    //get current user id from sts
-    const currentUserId = 2
+    const currentUserId = useUserStore(state => state.id)
     const { data, isLoading, error } = useFetch<Recipe[]>({ apiFunction: getRecipesByCreatedById, args: currentUserId })
     if (isLoading) {
         return <Spinner />;
     }
 
     if (error) {
-        return <Spinner />;
+        throw error
     }
 
     const onRecipePress = (recipe: Recipe) => {

@@ -12,6 +12,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import { Outlet, useNavigate } from "react-router";
+import { ErrorBoundary } from "react-error-boundary";
+import Fallback from "../pages/errors/errorFallback";
 
 const pages = ["home", "my recipes", "favorites"];
 const settings = ["Profile", "Logout"];
@@ -53,12 +55,12 @@ function HomeLayout() {
     };
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
+        <Box sx={{ display: "flex", flexDirection: "column", height: "100vh" }}>
             <AppBar position="sticky">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <Typography
-                            variant="h6"
+                            variant="h5"
                             noWrap
                             component="a"
                             href="#app-bar-with-responsive-menu"
@@ -127,7 +129,12 @@ function HomeLayout() {
                         >
                             Flavor Exchange
                         </Typography>
-                        <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent: "center" }}>
+                        <Box
+                            sx={{
+                                flexGrow: 1,
+                                display: { xs: "none", md: "flex" },
+                            }}
+                        >
                             {pages.map((page) => (
                                 <Button
                                     key={page}
@@ -172,8 +179,10 @@ function HomeLayout() {
                     </Toolbar>
                 </Container>
             </AppBar>
-            <Box sx={{ flexGrow: 1, overflowY: 'auto', padding: 2 }}>
-                <Outlet />
+            <Box sx={{ flexGrow: 1, overflowY: "auto", padding: 2 }}>
+                <ErrorBoundary FallbackComponent={Fallback}>
+                    <Outlet />
+                </ErrorBoundary>
             </Box>
         </Box>
     );
