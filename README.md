@@ -1,54 +1,88 @@
-# React + TypeScript + Vite
+# 🍲 Flavor Exchange
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Flavor Exchange** is a modern React-based mock recipe management app where users can register, log in, browse, search, create, edit, and delete recipes. Users can also favorite recipes they love — all powered by a mock API and client-side authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ Features
 
-## Expanding the ESLint configuration
+- 🔐 **User Authentication**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+  - Register & Login with client-side validation
+  - User data is stored securely in **Local Storage**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- 📋 **Recipe Management**
+
+  - View all recipes
+  - Search recipes by keyword
+  - Add, edit, and delete recipes
+  - Favorite/unfavorite recipes
+
+- 🧪 **Mock API Setup**
+  - All recipe data is served from a **mock API layer**
+  - Initial data loaded from a JSON file (`api/data/recipes.json`)
+  - API requests simulated using delay and promise-based handlers
+
+---
+
+## 🧱 Tech Stack
+
+- ⚛️ **React 19** + **TypeScript**
+- 🎨 **MUI (Material UI)** for component styling
+- 🧵 **Tailwind CSS** for custom utility styling
+- 🧠 **Zustand** for global state management
+- 🛠️ **Vite** for fast dev environment
+- 🧼 **ESLint** + TypeScript config for clean code
+- 🌐 **React Router** for navigation
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/your-username/flavor-exchange.git
+cd flavor-exchange
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+## 3. Run the development server
+
+```bash
+npm run dev
+```
+
+## 📌 Notes
+
+This app uses local storage to store user login info and favorite recipes.
+
+There is no backend — all recipe CRUD operations are handled using a custom mock API layer.
+
+For a real-world version, the mock API could be replaced with tools like json-server, Firebase, or a real backend.
+
+## 🙌 Acknowledgments
+
+[React](https://reactjs.org/)
+
+[Material UI](https://mui.com/)
+
+[Tailwind CSS](https://tailwindcss.com/)
+
+[Zustand](https://github.com/pmndrs/zustand)
+
+[Vite](https://vitejs.dev/)
+
+## 📃 License
+
+This project is licensed under the MIT License.
+
+## 👤 Author
+
+Ridmi Weerasinghe
+An aspiring full-stack developer passionate about building clean and functional web apps.

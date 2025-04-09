@@ -13,7 +13,11 @@
         ],
         "createdBy": 1,
         "ratings": 5,
-        "isFavorite": true
+        "isFavorite": true,
+        "tags": [
+            "vegan",
+            "gluten-free"
+        ]
     },
     {
         "id": 2,
@@ -31,7 +35,10 @@
             "Walnuts"
         ],
         "createdBy": 1,
-        "ratings": 4
+        "ratings": 4,
+        "tags": [
+            "nut-free"
+        ]
     },
     {
         "id": 3,
@@ -55,7 +62,11 @@
             "Butter"
         ],
         "createdBy": 2,
-        "ratings": 1
+        "ratings": 1,
+        "tags": [
+            "vegan",
+            "gluten-free"
+        ]
     },
     {
         "id": 4,
@@ -80,7 +91,11 @@
             "Parsley"
         ],
         "createdBy": 3,
-        "ratings": 4
+        "ratings": 4,
+        "tags": [
+            "vegan",
+            "gluten-free"
+        ]
     },
     {
         "id": 5,
@@ -102,7 +117,10 @@
             "Butter"
         ],
         "createdBy": 2,
-        "ratings": 4
+        "ratings": 4,
+        "tags": [
+            "high-protein"
+        ]
     },
     {
         "id": 6,
@@ -117,7 +135,10 @@
             "Peanuts"
         ],
         "createdBy": 4,
-        "ratings": 4
+        "ratings": 4,
+        "tags": [
+            "nut-free"
+        ]
     },
     {
         "id": 7,
@@ -133,7 +154,11 @@
             "Miniature Marshmallows"
         ],
         "createdBy": 2,
-        "ratings": 1
+        "ratings": 1,
+        "tags": [
+            "oil-free",
+            "high-protein"
+        ]
     },
     {
         "id": 8,
@@ -153,7 +178,10 @@
             "Gruyère"
         ],
         "createdBy": 2,
-        "ratings": 1
+        "ratings": 1,
+        "tags": [
+            "low-carb"
+        ]
     },
     {
         "id": 9,
@@ -182,7 +210,11 @@
             "Chives"
         ],
         "createdBy": 1,
-        "ratings": 5
+        "ratings": 5,
+        "tags": [
+            "vegan",
+            "low-sodium"
+        ]
     },
     {
         "id": 10,
@@ -209,7 +241,12 @@
             "Cumin Seeds"
         ],
         "createdBy": 1,
-        "ratings": 0
+        "ratings": 0,
+        "tags": [
+            "vegan",
+            "gluten-free",
+            "low-sodium"
+        ]
     },
     {
         "id": 11,
@@ -226,6 +263,11 @@
             "Vegetable Oil"
         ],
         "createdBy": 1,
-        "ratings": 4
+        "ratings": 4,
+        "tags": [
+            "vegan",
+            "gluten-free",
+            "fast and easy"
+        ]
     }
 ]

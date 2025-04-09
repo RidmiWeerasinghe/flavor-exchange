@@ -11,10 +11,11 @@ type FormData = {
     ingredients: string[],
     instructions: string,
     ratings: number,
+    tags: string[]
 }
 
 export default function useCreateRecipeForm() {
-    const userId = useUserStore(state => state.id)
+    const userId = useUserStore(state => state.id)!
     const navigate = useNavigate()
     const [formValues, setFormValues] = useState<FormData>({
         id: 0,
@@ -22,9 +23,11 @@ export default function useCreateRecipeForm() {
         image: '',
         ingredients: [],
         instructions: "",
-        ratings: 0
+        ratings: 0,
+        tags: []
     })
     const [rawIngredientsInput, setRawIngredientsInput] = useState('');
+    const [rawTagsInput, setRawTagsInput] = useState('');
     const handleFormInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
@@ -36,14 +39,15 @@ export default function useCreateRecipeForm() {
             image: formValues.image,
             ingredients: formValues.ingredients,
             instructions: formValues.instructions,
-            createdBy: userId ? userId : 2,
-            ratings: formValues.ratings
+            createdBy: userId,
+            ratings: formValues.ratings,
+            tags: formValues.tags
         };
         updateRecipe(recipe);
         navigate("/my-recipes");
     }
 
-    const handleFormArrayInput = (value: string) => {
+    const handleFormIngredientsArrayInput = (value: string) => {
         setRawIngredientsInput(value)
         const updatedArray = value
             .split(',')
@@ -55,6 +59,18 @@ export default function useCreateRecipeForm() {
             ingredients: updatedArray,
         }))
     }
+    const handleFormTagsArrayInput = (value: string) => {
+        setRawTagsInput(value)
+        const updatedArray = value
+            .split(',')
+            .map(item => item.trim())
+            .filter(item => item !== '')
+
+        setFormValues(prev => ({
+            ...prev,
+            tags: updatedArray,
+        }))
+    }
     const initializeFormValues = (data: Recipe) => {
         setFormValues({
             id: data.id,
@@ -62,7 +78,8 @@ export default function useCreateRecipeForm() {
             image: data.image,
             ingredients: data.ingredients,
             instructions: data.instructions,
-            ratings: data.ratings
+            ratings: data.ratings,
+            tags: data.tags
         });
         setRawIngredientsInput(data.ingredients.join(', '));
     };
@@ -70,8 +87,10 @@ export default function useCreateRecipeForm() {
     return {
         formValues,
         handleFormInput,
-        handleFormArrayInput,
+        handleFormIngredientsArrayInput,
+        handleFormTagsArrayInput,
         rawIngredientsInput,
+        rawTagsInput,
         handleSubmit,
         initializeFormValues
     }

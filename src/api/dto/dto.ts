@@ -5,7 +5,7 @@ const dtoToRecipe = (data: any): Recipe => {
         id: data['id'],
         title: data['title'] || '',
         image: data['image'] || '',
-        //tags: data['tags'] || [],
+        tags: data['tags'] || [],
         ingredients: data['ingredients'] || [],
         instructions: data['instructions'] || [],
         ratings: data['ratings'] || [],

@@ -10,7 +10,7 @@ type FormData = {
 
 export default function UseRegistrationForm() {
     const navigate = useNavigate()
-    const user = useUserStore.getState()
+    const user = useUserStore()
     const [formValues, setFormValues] = useState<FormData>({
         username: '',
         password: '',
@@ -22,13 +22,14 @@ export default function UseRegistrationForm() {
     }
 
     const handleSubmit = () => {
+        user.setId(1)
         user.setUsername(formValues.username)
         user.setPassword(formValues.password)
-        navigate("/login")
+        navigate("/")
     }
 
     const handleClickLogin = () => {
-        navigate("/login")
+        navigate("/")
     }
     return {
         formValues,

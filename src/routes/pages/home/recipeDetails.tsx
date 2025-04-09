@@ -52,7 +52,13 @@ export default function RecipeDetails() {
                 <Typography variant="h4" gutterBottom>
                     {data?.title}
                 </Typography>
-
+                <Typography variant="body1" sx={{ whiteSpace: 'pre-line' }}>
+                    {data?.tags.map((item, index) => (
+                        <span key={index}>
+                            <Typography variant="body1">{item}</Typography>
+                        </span>
+                    ))}
+                </Typography>
                 <Box
                     component="img"
                     src={data?.image || "https://st4.depositphotos.com/13349494/27992/i/450/depositphotos_279925888-stock-photo-top-view-raw-meat-fish.jpg"}

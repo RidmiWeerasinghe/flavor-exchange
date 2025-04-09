@@ -37,7 +37,7 @@ function HomeLayout() {
 
         switch (page) {
             case "home":
-                navigate("/home");
+                navigate("/");
                 break;
             case "my recipes":
                 navigate("/my-recipes");

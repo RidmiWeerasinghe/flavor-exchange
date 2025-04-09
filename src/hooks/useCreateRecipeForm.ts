@@ -9,18 +9,21 @@ type FormData = {
     image: string,
     ingredients: string[],
     instructions: string,
+    tags: string[]
 }
 
 export default function useCreateRecipeForm() {
-    const userId = useUserStore(state => state.id)
+    const userId = useUserStore(state => state.id)!
     const navigate = useNavigate()
     const [formValues, setFormValues] = useState<FormData>({
         title: '',
         image: '',
         ingredients: [],
-        instructions: ""
+        instructions: "",
+        tags: []
     })
     const [rawIngredientsInput, setRawIngredientsInput] = useState('');
+    const [rawTagsInput, setRawTagsInput] = useState('');
     const handleFormInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFormValues(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
@@ -32,14 +35,16 @@ export default function useCreateRecipeForm() {
             image: formValues.image,
             ingredients: formValues.ingredients,
             instructions: formValues.instructions,
-            createdBy: userId ? userId : 2,
-            ratings: 2
+            createdBy: userId,
+            ratings: 2,
+            tags: formValues.tags
         };
+        console.log(recipe)
         createRecipe(recipe);
         navigate("/my-recipes");
     }
 
-    const handleFormArrayInput = (value: string) => {
+    const handleFormIngredientsArrayInput = (value: string) => {
         setRawIngredientsInput(value)
         const updatedArray = value
             .split(',')
@@ -51,11 +56,25 @@ export default function useCreateRecipeForm() {
             ingredients: updatedArray,
         }))
     }
+    const handleFormTagsArrayInput = (value: string) => {
+        setRawTagsInput(value)
+        const updatedArray = value
+            .split(',')
+            .map(item => item.trim())
+            .filter(item => item !== '')
+
+        setFormValues(prev => ({
+            ...prev,
+            tags: updatedArray,
+        }))
+    }
     return {
         formValues,
         handleFormInput,
-        handleFormArrayInput,
+        handleFormIngredientsArrayInput,
+        handleFormTagsArrayInput,
         rawIngredientsInput,
+        rawTagsInput,
         handleSubmit
     }
 }

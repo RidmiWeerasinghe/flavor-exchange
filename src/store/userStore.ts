@@ -7,11 +7,13 @@ type UserStore = {
     username?: User['username']
     password?: User['password']
     savedRecipes: User['savedRecipes']
+    isAuthenticated: boolean
 
     setId: (id?: User['id']) => void,
     setUsername: (username?: User['username']) => void,
     setPassword: (password?: User['password']) => void,
     setFavorites: (favorites?: User['savedRecipes']) => void,
+    setAuthenticated: (value: boolean) => void,
 
     addToFavorites: (_: Recipe['id']) => void,
     removeFromFavorites: (_: Recipe['id']) => void,
@@ -22,11 +24,13 @@ const useUserStore = create<UserStore>()(persist((set) => ({
     username: undefined,
     password: undefined,
     savedRecipes: [],
+    isAuthenticated: false,
 
     setId: (userId) => set({ id: userId }),
     setUsername: (username) => set({ username }),
     setPassword: (password) => set({ password }),
-    setFavorites: (favorites = []) => set(({ savedRecipes: [...favorites] })),
+    setFavorites: (favorites = []) => set({ savedRecipes: [...favorites] }),
+    setAuthenticated: (value) => set({ isAuthenticated: value }),
 
     addToFavorites: (recipeId) => set((state) => ({ savedRecipes: state.savedRecipes ? [...state.savedRecipes, recipeId] : [recipeId] })),
     removeFromFavorites: (recipeId) => set((state) => ({ savedRecipes: state.savedRecipes.filter(r => r !== recipeId) })),

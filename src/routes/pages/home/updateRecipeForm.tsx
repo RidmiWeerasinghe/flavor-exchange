@@ -12,8 +12,10 @@ export default function UpdateRecipeForm() {
     const {
         formValues,
         handleFormInput,
-        handleFormArrayInput,
+        handleFormIngredientsArrayInput,
+        handleFormTagsArrayInput,
         rawIngredientsInput,
+        rawTagsInput,
         handleSubmit,
         initializeFormValues
     } = useUpdateRecipeForm()
@@ -68,7 +70,7 @@ export default function UpdateRecipeForm() {
                 label="Ingredients (comma-separated)"
                 name="ingredients"
                 value={rawIngredientsInput}
-                onChange={(e) => handleFormArrayInput(e.target.value)}
+                onChange={(e) => handleFormIngredientsArrayInput(e.target.value)}
                 fullWidth
                 placeholder="e.g., chicken, salt, pepper"
             />
@@ -83,8 +85,17 @@ export default function UpdateRecipeForm() {
                 fullWidth
             />
 
+            <TextField
+                label="Tags (comma-separated)"
+                name="tags"
+                value={rawTagsInput}
+                onChange={(e) => handleFormTagsArrayInput(e.target.value)}
+                fullWidth
+                placeholder="e.g., high-protein, vegan, gluten-free"
+            />
+
             <Button variant="contained" onClick={handleSubmit}>
-                Submit
+                Update
             </Button>
         </Stack>
     )

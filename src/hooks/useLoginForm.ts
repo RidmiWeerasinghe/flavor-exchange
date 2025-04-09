@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useNavigate } from "react-router"
+import { useUserStore } from "../store/userStore"
 
 type FormData = {
     username: string,
@@ -7,7 +8,8 @@ type FormData = {
 }
 
 export default function useLoginForm() {
-    const navigation = useNavigate()
+    const user = useUserStore()
+    const navigate = useNavigate()
     const [formValues, setFormValues] = useState<FormData>({
         username: '',
         password: '',
@@ -18,14 +20,15 @@ export default function useLoginForm() {
     }
 
     const handleSubmit = () => {
-        if (formValues.username === 'testUser' && formValues.password === 'pass') {
-            navigation("/home")
+        if (formValues.username === user.username && formValues.password === user.password) {
+            user.setAuthenticated(true);
         }
     }
 
     const handleOnClickRegister = () => {
-        navigation("/register")
+        navigate("/register")
     }
+
     return {
         formValues,
         handleFormInput,
